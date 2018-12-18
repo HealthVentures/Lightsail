@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # Lightsail: Setup CertBot for SSL Install
-# TEST NEW COMMENT FOR GITHUB
 #
 echo "]]] Lightsail: Setup CertBot for SSL Install"
+echo ""
 echo "...Update Apt-Get"
 sudo apt-get update
 echo "...Autoclean"
@@ -18,17 +18,41 @@ sudo chmod a+x ./certbot-auto
 echo "...RunCertBot"
 sudo ./certbot-auto
 echo "...Query DomainName"
-# how to request name and store in variable?
-# var1=base domain
-# var2='www.'+basedomain
-exit
-# how to use variable?
+
+#!/bin/bash
 echo "...Get SSL Certificate for Domain"
-sudo ./certbot-auto certonly --webroot -w /opt/bitnami/apps/wordpress/htdocs/ -d www.example.com -d example.com
+echo ""
+
+read -p "What is your baseline domain name? :> " domainname
+echo ""
+
+wwwdomainname="www.$domainname"
+
+echo "... Installing certificate for:"
+echo "... $domainname and $wwwdomainname"
+echo ""
+
+# --- figure out how to pause better
+# read -p "Continue (y/n)? " -n 1 -r
+# if [[ ! $REPLY =~ ^[Yy]$ ]]
+# then
+#    exit 1
+
+# CONTINUE TO INSTALL CERT
+
+echo "...Get SSL Certificate for Domain"
+cd /opt/bitnami/letsencrypt
+sudo ./certbot-auto certonly --webroot -w /opt/bitnami/apps/wordpress/htdocs/ -d $wwwdomainname -d $domainname
+
 echo "...Rename existing keys to .old"
 mv /opt/bitnami/apache2/conf/server.key /opt/bitnami/apache2/conf/serverkey.old
 mv /opt/bitnami/apache2/conf/server.crt /opt/bitnami/apache2/conf/servercrt.old
+
 echo "...Create symlink to Domain SSL keys"
-sudo ln -s/etc/letsencrypt/live/[DOMAIN]/fullchain.pem /opt/bitnami/apache2/conf/server.crt
-sudo ln -s/etc/letsencrypt/live/[DOMAIN]/privkey.pem /opt/bitnami/apache2/conf/server.key
+sudo ln -s /etc/letsencrypt/live/$wwwdomainname/fullchain.pem /opt/bitnami/apache2/conf/server.crt
+sudo ln -s /etc/letsencrypt/live/$wwwdomainname/privkey.pem /opt/bitnami/apache2/conf/server.key
+
+echo ""
+echo "...Next Step: Update wp_config for https prefix"
 echo "...Next Step: Restart Apache"
+
