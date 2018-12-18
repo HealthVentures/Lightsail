@@ -10,6 +10,7 @@ echo ""
 wwwdomainname="www.$domainname"
 
 echo "Your domain with the www prefix is > $wwwdomainname"
+
  
 
 
