@@ -10,8 +10,8 @@ echo "]]] Lightsail Multisite Prep [[["
 echo ""
 
 echo "... Turn of Bitnami Banner"
-
-sudo /opt/bitnami/apps/wordpress/bnconfig — disable_banner 1
+cd /opt/bitnami/apps/wordpress
+sudo ./bnconfig — disable_banner 1
 
 
 echo ""
@@ -21,7 +21,7 @@ echo ""
 # wwwdomainname="www.$domainname"
 
 echo "... Update Bitnami domain name"
-sudo ./bnconfig — machine_hostname $domainname
+sudo ./bnconfig --machine_hostname $domainname
 
 echo "... Turn off Bitnami auto IP reset on reboot"
 sudo mv bnconfig bnconfig.disabled
