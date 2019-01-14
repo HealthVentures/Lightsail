@@ -22,7 +22,7 @@ cp sav/wp-config.php .
 echo "]]] SETTING OWNERSHIP..."
 
 sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/
-sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/
+# sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/
 
 echo "]]] SETTING PERMISSIONS..."
 
