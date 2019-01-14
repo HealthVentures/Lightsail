@@ -25,5 +25,7 @@ echo "]]] SETTING PERMISSIONS/OWNERSHIP..."
 sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/wp-content
 sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/wp-content
 
-echo "]]] DONE..."
+clear
+echo "]]] WORDPRESS INSTALLED..."
+ll /opt/bitnami/apps/wordpress/htdocs
 

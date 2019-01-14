@@ -11,7 +11,7 @@ echo "]]] RESTORING PLUGINS..."
 cp -fr sav/plugins/ wp-content/
 
 echo "]]] RESTORING UPLOADS..."
-cp sav/uploads/ wp-content/
+cp -ft sav/uploads/ wp-content/
 
 echo "]]] RESTORING WPCONFIG..."
 
