@@ -12,7 +12,7 @@ tar -xzvf latest.tar.gz
 cd wordpress
 sudo mv -f * ../
 cd ..
-rm -rm wordpress
+rm -rf wordpress
 rm latest.tar.gz
 
 echo "]]] SETTING PERMISSIONS..."
