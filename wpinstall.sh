@@ -27,5 +27,5 @@ sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/wp-content
 
 clear
 echo "]]] WORDPRESS INSTALLED..."
-ll /opt/bitnami/apps/wordpress/htdocs
+ls -salt /opt/bitnami/apps/wordpress/htdocs
 
