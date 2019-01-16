@@ -21,8 +21,8 @@ cp sav/wp-config.php .
 
 echo "]]] SETTING OWNERSHIP..."
 
-sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/
-# sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/
+sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/wp-content
+sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/wp-content
 
 echo "]]] SETTING PERMISSIONS..."
 
@@ -31,10 +31,14 @@ cd /opt/bitnami/apps/wordpress/htdocs/
 sudo find . -type d -exec chmod 0755 {} \;
 sudo find . -type f -exec chmod 0644 {} \;
 
-chmod 600 wp-config.php
+chmod 660 wp-config.php
 
-echo "]]] DONE..."
-ls -salt /opt/bitnami/apps/wordpress/htdocs/
+echo "]]] WORDPRESS SITE RESTORED..."
+ls -salth /opt/bitnami/apps/wordpress/htdocs/
+
+echo "]]] RESTART SERVICES ..."
+sudo /opt/bitnami/ctlscript.sh restart
+
 
 
 
