@@ -1,23 +1,10 @@
 #!/bin/bash
 #
-# RESTORE SAVED WP FILES 
+# REFRESH WORDPRESS PERMISSIONS/OWNERSHIP 
 #
 clear
 
 cd /opt/bitnami/apps/wordpress/htdocs/
-
-echo "]]] RESTORING DIVI THEME..."
-cp -fr sav/themes/Divi wp-content/themes/
-
-echo "]]] RESTORING PLUGINS..."
-cp -fr sav/plugins/ wp-content/
-
-echo "]]] RESTORING UPLOADS..."
-cp -fr sav/uploads/ wp-content/
-
-echo "]]] RESTORING WPCONFIG..."
-
-cp sav/wp-config.php .
 
 echo "]]] SETTING OWNERSHIP..."
 
@@ -33,10 +20,8 @@ sudo find . -type f -exec chmod 0644 {} \;
 
 chmod 640 wp-config.php
 
-echo "]]] WORDPRESS SITE RESTORED..."
-ls -salth /opt/bitnami/apps/wordpress/htdocs/
+echo "]]] SETTING PERMISSIONS..."
 
-echo "]]] RESTART SERVICES ..."
 sudo /opt/bitnami/ctlscript.sh restart
 
 

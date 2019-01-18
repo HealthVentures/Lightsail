@@ -37,7 +37,7 @@ cd /opt/bitnami/apps/wordpress/htdocs/
 sudo find . -type d -exec chmod 0755 {} \;
 sudo find . -type f -exec chmod 0644 {} \;
 
-sudo chmod 660 wp-config.php
+sudo chmod 640 wp-config.php
 
 echo "]]] WORDPRESS INSTALLED..."
 ls -salth /opt/bitnami/apps/wordpress/htdocs
