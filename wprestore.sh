@@ -6,30 +6,32 @@ clear
 
 cd /opt/bitnami/apps/wordpress/htdocs/
 
-echo "]]] RESTORING DIVI THEME..."
+echo "]]] RESTORE DIVI THEME..."
 cp -fr sav/themes/Divi wp-content/themes/
 
-echo "]]] RESTORING PLUGINS..."
+echo "]]] RESTORE PLUGINS..."
 cp -fr sav/plugins/ wp-content/
 
-echo "]]] RESTORING UPLOADS..."
+echo "]]] RESTORE UPLOADS..."
 cp -fr sav/uploads/ wp-content/
 
-echo "]]] RESTORING WPCONFIG..."
+echo "]]] RESTORE WPCONFIG..."
 
 cp sav/wp-config.php .
 
-echo "]]] SETTING OWNERSHIP..."
-
-sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/wp-content
-sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/wp-content
-
-echo "]]] SETTING PERMISSIONS..."
+echo "]]] SET PERMISSIONS..."
 
 cd /opt/bitnami/apps/wordpress/htdocs/
 
 sudo find . -type d -exec chmod 0755 {} \;
 sudo find . -type f -exec chmod 0644 {} \;
+
+echo "]]] SET OWNERSHIP..."
+
+sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/wp-content
+sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/wp-content
+
+echo "]]] SECURE WPCONFIG..."
 
 chmod 640 wp-config.php
 

@@ -21,21 +21,19 @@ cd ..
 rm -rf wordpress
 rm latest.tar.gz
 
-echo "]]] SETTING OWNERSHIP..."
-
-sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/wp-content
-sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/wp-content
-
-
-# this was suggested to do after getting a plugin activated if denied first a plus to enable it to be more persmissive then minus after getting to work
-# sudo chmod g-w /opt/bitnami/apps/wordpress/htdocs/wp-config.php
-
-echo "]]] SETTING PERMISSIONS..."
+echo "]]] SET PERMISSIONS..."
 
 cd /opt/bitnami/apps/wordpress/htdocs/
 
 sudo find . -type d -exec chmod 0755 {} \;
 sudo find . -type f -exec chmod 0644 {} \;
+
+echo "]]] SET OWNERSHIP..."
+
+sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/wp-content
+sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/wp-content
+
+echo "]]] SECURE WPCONFIG..."
 
 sudo chmod 640 wp-config.php
 
