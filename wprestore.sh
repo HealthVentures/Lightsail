@@ -25,7 +25,7 @@ cd /opt/bitnami/apps/wordpress/htdocs/
 
 sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs/wp-content
 
-sudo find . -type d -exec chmod 0755 {} \;
+sudo find . -type d -exec chmod 0775 {} \;
 sudo find . -type f -exec chmod 0644 {} \;
 
 sudo chmod -R g+w /opt/bitnami/apps/wordpress/htdocs/wp-content
