@@ -16,3 +16,9 @@ sudo ln -s /opt/bitnami/bncert/bncert-linux-x64.run /opt/bitnami/bncert-tool
 read -p "Press enter to setup new SSL certificate:"
 
 sudo /opt/bitnami/bncert-tool
+
+# work in progress - not complete
+# if this error 
+# Error running /opt/bitnami/apps/wordpress/bnconfig --machine_hostname 
+# then use this fix
+# sudo chmod +x /opt/bitnami/apps/wordpress/bnconfig.disabled

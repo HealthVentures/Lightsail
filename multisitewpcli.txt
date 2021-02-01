@@ -1,0 +1,11 @@
+# ------  multisite wp cli commands
+
+# --- search replace all multisite
+
+wp search-replace --network 'http://hvdemo.com' 'https://hvdemo.com' --url=hvdemo.com
+
+wp cache flush
+
+# --- search replace multisite specific tables (no http://)
+
+wp search-replace old.example.com new.example.com.com wp_site wp_blogs
